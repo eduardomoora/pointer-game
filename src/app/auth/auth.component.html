@@ -1,0 +1,26 @@
+<main>
+
+<mat-card class="form-container">
+  <form class="form-area">
+    <h2 class="form-area__title">Login</h2>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>username</mat-label>
+        <input [formControl]="nameControl" matInput placeholder="Type your username ">
+        <mat-icon matSuffix>face_6</mat-icon>
+        <mat-hint>Your nickname must contain at least 4 </mat-hint>
+      </mat-form-field>
+    </p>
+   <!-- <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Standard form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>password</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>-->
+    <button [disabled]="nameControl.invalid" (click)="onLogin()" class="form-area__button"mat-flat-button color="primary">Join</button>
+  </form>
+</mat-card>
+</main>
+

@@ -1,0 +1,53 @@
+@keyframes cssAnimation_0 {
+  to {
+    transform: translateY(-20px)
+  }
+}
+:host{
+  display:flex;
+  flex-direction: column;
+  height:100vh;
+  main{
+    flex-grow: 2;
+  }
+  .dashboard {
+    &-container{
+      margin-top:20px;
+      gap: 5px;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    &-table{
+      margin-top:10px;
+      display:flex;
+      justify-content: center;
+
+      &__actions {
+        display:flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      & .table-pointer{
+        min-width: 200px;
+      }
+    }
+    &-card {
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      width: 80px;
+      height: 120px;
+      font-size:50px;
+      cursor:pointer;
+      &:hover{
+        animation: cssAnimation_0 600ms  ease-out;
+        transition: 1s;
+      }
+    }
+  }
+}
+
+
+

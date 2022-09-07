@@ -1,0 +1,68 @@
+<nav><p>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Poker pointer</span>
+    <span>welcome {{user?.name}}</span>
+    <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    <button mat-icon-button (click)="logout()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+</p></nav>
+<main>
+  <div class="dashboard-container">
+    <mat-card
+      (click)="onPoint(card)"
+      *ngFor="let card of listPoints; let i = index" class="dashboard-card">
+      {{card}}
+    </mat-card>
+  </div>
+  <div class="dashboard-table">
+    <div *ngIf="users$ | async as users">
+      <div class="dashboard-table__actions">
+        <button (click)="onShowCards()" mat-raised-button color="primary">Show points</button>
+        <button (click)="reset()" mat-raised-button color="accent">Reset</button>
+      </div>
+      <table  mat-table [dataSource]="users" class="mat-elevation-z8 table-pointer">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.name}}
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="points">
+          <th mat-header-cell *matHeaderCellDef> Points </th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="(showCards$ | async); else card">{{element.points}} </ng-container>
+            <ng-template #card>
+            <span *ngIf="element.points === null"></span>
+            <span *ngIf="element.points !== null">card</span>
+          </ng-template>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+  </div>
+</main>
+<footer>footer</footer>
+
+
