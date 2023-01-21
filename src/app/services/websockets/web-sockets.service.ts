@@ -35,33 +35,26 @@ export class WebSocketsService {
 
   emitEvent(event: string, data: any) {
     this.socket.emit(event, {...data}, (res: any) => {
-
-
     });
   }
 
   loginUser(data: string) {
     this.socket.emit('userConnected', {name: data}, (res: any) => {
       this._user = res.data.user
-      console.log('login',res.data.user)
       this.loadLocalStorage(res.data.user);
       this.route.navigate(['dashboard', 'room', 123456789]);
     })
   }
 
   loadLocalStorage(user: User): void {
-    console.log('loadStorage')
     localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
   reloadStorage(): void {
-    console.log('reload called')
     const userStorage = localStorage.getItem('currentUser');
-
     if (!userStorage) {
       return
     }
-    console.log('usestorage',userStorage)
     const user = JSON.parse(userStorage);
     this.loginUser(user.name)
   }
@@ -73,7 +66,6 @@ export class WebSocketsService {
 
     this.socket.fromEvent<boolean>('showCards').pipe(
       tap((data: boolean) => this.showCards.next(data)),
-      tap((data) => console.log(data,'newe one'))
     ).subscribe();
   }
 
