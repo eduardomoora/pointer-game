@@ -8,11 +8,13 @@ import { sizesMap } from './sizes.model';
 
 export class SizesPipe implements PipeTransform {
 
-  transform(value: number): string {
+  transform(value: any): string {
 
 
 
-    return sizesMap.get(value);
+    //return sizesMap.get(value);
+
+    return value;
   }
 
 }
