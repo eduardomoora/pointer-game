@@ -18,8 +18,10 @@ $my-theme: mat.define-light-theme((
 @include mat.core-theme($my-theme);
 
 body{
-  background: rgb(131,58,180);
-  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 32%, rgba(252,176,69,1) 100%);
+  background-image: url('assets/img/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+ /* background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 32%, rgba(252,176,69,1) 100%);*/
 }
 
 html, body { height: 100%; }
